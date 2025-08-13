@@ -339,13 +339,27 @@
     await replaceTOC();
   }
 
-  const ready = (fn) => {
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", fn, { once: true });
-    } else {
-      fn();
-    }
-  };
+  ready(() => {
+    run().catch(err => console.error("[FullTOC] Uncaught:", err));
+  
+    const mo = new MutationObserver((muts) => {
+      for (const m of muts) {
+        if (m.addedNodes && m.addedNodes.length) {
+          const added = Array.from(m.addedNodes);
+          
+          if (added.some(n =>
+            n.nodeType === 1 &&
+            /toc|chapter/i.test(n.textContent || "") &&
+            (n.querySelector && (n.querySelector("a[href*='chap']") || n.querySelector("a[href*='toc']")))
+          )) {
+            run().catch(() => {});
+            break;
+          }
+        }
+      }
+    });
+    mo.observe(document.documentElement, { childList: true, subtree: true });
+  });
 
   ready(() => {
     run();
