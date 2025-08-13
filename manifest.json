@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Honeyfix",
+  "version": "1.0",
+  "description": "Fixes issues with Honeyfeed's design and allows the blocking of covers.",
+  "permissions": ["storage", "contextMenus"],
+  "host_permissions": ["*://*.honeyfeed.fm/*"],
+  "background": { "service_worker": "src/bg.js", "scripts": ["src/bg.js"] },
+  "content_scripts": [
+    {
+      "matches": ["*://*.honeyfeed.fm/*"],
+      "js": ["vendor/browser-polyfill.min.js", "src/honeyfix.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [{
+    "resources": ["covers/*"],
+    "matches": ["https://*.honeyfeed.fm/*"]
+  }],
+  "icons": {}
+}
