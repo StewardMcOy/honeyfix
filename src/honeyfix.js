@@ -23,20 +23,6 @@
     }
   }
 
-  function moveReviewsDown() {
-    const review = document.querySelector('.unit-review');
-    const comments = document.querySelector('#wrap-comment-put-together');
-
-    if (!review || !comments) {
-      return;
-    }
-
-    const addReviewContainer = review.parentElement.nextSibling;
-
-    comments.parentElement.insertBefore(review.parentElement, comments);
-    comments.parentElement.insertBefore(addReviewContainer, comments);
-  }
-
   async function replaceTOC() {
     let fullTocLink = document.querySelector('[data-gtm-click="link-chapters-novelsShow"]');
     let partialRoot = document.querySelector('.list-chapter');
@@ -317,7 +303,6 @@
 
   async function run() {
     fixCoverWidth();
-    moveReviewsDown();
     await refreshBanlist();
     await replaceBannedImagesOnPage();
     await replaceTOC();
