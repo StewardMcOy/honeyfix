@@ -18,36 +18,7 @@
       coverDIV.style.maxWidth = '171px';
     }
   }
-  
-  function moveDetailsUp() {
-    const details = document.querySelector('#tab-detail');
-    const chapters = document.querySelector('#tab-chapters');
-    const tabs = document.querySelector('.wrap-tabs');
-    const container = document.querySelector('#wrap-chapter');
-    
-    if (!details || !chapters || !tabs || !container) {
-      return;
-    }
-    
-    tabs.remove();
-    
-    container.parentElement.insertBefore(details, container);
-    container.parentElement.insertBefore(chapters, container);
-    container.remove();
-    
-    details.classList.remove('tab-pane');
-    details.classList.remove('active');
-    details.classList.add('mt20');
-    details.classList.add('b-radius-8');
-    details.classList.add('white');
-    
-    chapters.classList.remove('tab-pane');
-    chapters.classList.remove('active');
-    chapters.classList.add('mt20');
-    chapters.classList.add('b-radius-8');
-    chapters.classList.add('white');
-  }
-  
+
   function moveReviewsDown() {
     const review = document.querySelector('.unit-review');
     const comments = document.querySelector('#wrap-comment-put-together');
@@ -332,7 +303,6 @@
 
   async function run() {
     fixCoverWidth();
-    moveDetailsUp();
     moveReviewsDown();
     await refreshBanlist();
     await replaceBannedImagesOnPage();
