@@ -34,7 +34,7 @@
   }
 
   async function replaceTOC() {
-    let fullTocLink = document.querySelector('[data-gtm-click="link-all-chapters"]');
+    let fullTocLink = document.querySelector('[data-gtm-click="link-chapters-novelsShow"]');
     let partialRoot = document.querySelector('.list-chapter');
     
     if (!fullTocLink || !partialRoot) {
