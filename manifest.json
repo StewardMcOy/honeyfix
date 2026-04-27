@@ -17,5 +17,16 @@
     "resources": ["covers/*"],
     "matches": ["https://*.honeyfeed.fm/*"]
   }],
-  "icons": {}
+  "icons": {},
+  "browser_specific_settings": {
+	"gecko": {
+	  "id": "@honeyfix",
+	  "data_collection_permissions": {
+		"required": [
+		  "none"
+		]
+	  },
+	  "strict_min_version": "142.0"
+	}
+  }
 }
